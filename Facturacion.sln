@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturacion", "Facturacion\Facturacion.csproj", "{DB8B58A5-1DDB-40A6-8D0C-7C13276D8E37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{6EF916BB-3FB4-4338-B187-C8703E0CCA84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{29FE4C72-A28E-42EB-AD19-105525243D24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB8B58A5-1DDB-40A6-8D0C-7C13276D8E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8B58A5-1DDB-40A6-8D0C-7C13276D8E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8B58A5-1DDB-40A6-8D0C-7C13276D8E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8B58A5-1DDB-40A6-8D0C-7C13276D8E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF916BB-3FB4-4338-B187-C8703E0CCA84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF916BB-3FB4-4338-B187-C8703E0CCA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF916BB-3FB4-4338-B187-C8703E0CCA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF916BB-3FB4-4338-B187-C8703E0CCA84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29FE4C72-A28E-42EB-AD19-105525243D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29FE4C72-A28E-42EB-AD19-105525243D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29FE4C72-A28E-42EB-AD19-105525243D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29FE4C72-A28E-42EB-AD19-105525243D24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66165E3E-9009-4B72-977D-406D9A24FC59}
+	EndGlobalSection
+EndGlobal
