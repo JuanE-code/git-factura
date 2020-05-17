@@ -1,0 +1,44 @@
+﻿
+
+@model IEnumerable<Business.Areas.Producto.FacturaDetalleProducto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos Vendidos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Precio
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Producto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                <a class="btn btn-default" href="~/Producto/Update/@item.Id_Producto">Editar</a>
+                <a class="btn btn-danger" href="~/Producto/Delete/@item.Id_Producto">Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>

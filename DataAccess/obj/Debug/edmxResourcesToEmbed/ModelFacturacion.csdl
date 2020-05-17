@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FacturacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Identificacion_Cliente" />
+    </Key>
+    <Property Name="Identificacion_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__Fk_Clie__4D94879B" FromRole="Cliente" ToRole="Factura" />
+  </EntityType>
+  <EntityType Name="Detalle_Factura">
+    <Key>
+      <PropertyRef Name="Id_Detalle_Factura" />
+    </Key>
+    <Property Name="Id_Detalle_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Precio" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Fk_Factura" Type="Int32" Nullable="false" />
+    <Property Name="Fk_Producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Factura" Relationship="Self.FK__Detalle_F__Fk_Fa__5070F446" FromRole="Detalle_Factura" ToRole="Factura" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Detalle_F__Fk_Pr__5165187F" FromRole="Detalle_Factura" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Fk_Cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Factura__Fk_Clie__4D94879B" FromRole="Factura" ToRole="Cliente" />
+    <NavigationProperty Name="Detalle_Factura" Relationship="Self.FK__Detalle_F__Fk_Fa__5070F446" FromRole="Factura" ToRole="Detalle_Factura" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id_Producto" />
+    </Key>
+    <Property Name="Id_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Detalle_Factura" Relationship="Self.FK__Detalle_F__Fk_Pr__5165187F" FromRole="Producto" ToRole="Detalle_Factura" />
+    <Property Name="Precio" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Factura__Fk_Clie__4D94879B">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Identificacion_Cliente" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="Fk_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detalle_F__Fk_Fa__5070F446">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="Id_Factura" />
+      </Principal>
+      <Dependent Role="Detalle_Factura">
+        <PropertyRef Name="Fk_Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detalle_F__Fk_Pr__5165187F">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id_Producto" />
+      </Principal>
+      <Dependent Role="Detalle_Factura">
+        <PropertyRef Name="Fk_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FacturacionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Detalle_Factura" EntityType="Self.Detalle_Factura" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <AssociationSet Name="FK__Factura__Fk_Clie__4D94879B" Association="Self.FK__Factura__Fk_Clie__4D94879B">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detalle_F__Fk_Fa__5070F446" Association="Self.FK__Detalle_F__Fk_Fa__5070F446">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detalle_F__Fk_Pr__5165187F" Association="Self.FK__Detalle_F__Fk_Pr__5165187F">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

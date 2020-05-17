@@ -1,0 +1,70 @@
+﻿
+@model IEnumerable<Business.Areas.Cliente.ClienteFacturaDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Facturas entre 2000-01-01 y 2000-05-25</h2>
+
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>
+            Identificacion
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Edad
+        </th>
+        <th>
+            # Factura
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identificacion_Cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_Factura)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            <a class="btn btn-default" href="~/Cliente/Update/@item.Identificacion_Cliente">Editar</a>
+            <a class="btn btn-danger" href="~/Cliente/Delete/@item.Identificacion_Cliente">Eliminar</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Business.Areas.Factura.FacturaDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Facturas</h2>
+
+<p>
+    <a class="btn btn-primary" href="~/Factura/Create">Nuevo</a>
+
+</p>
+
+
+<p>
+    <a class="btn btn-primary" href="~/Factura/FacturasByFecha">Facturas por fecha</a>
+
+</p>
+
+
+<p>
+    <a class="btn btn-primary" href="~/Producto/ProductosVendidos">Productos Vendidos</a>
+
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Id Factura
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Cliente
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Factura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fk_Cliente)
+            </td>
+            <td>
+                <a class="btn btn-default" href="~/Factura/Update/@item.Id_Factura">Editar</a>
+                <a class="btn btn-danger" href="~/Factura/Delete/@item.Id_Factura">Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>
